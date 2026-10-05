@@ -1,4 +1,4 @@
-name: .NET Core CI
+name: .NET CI
 
 on:
   push:
@@ -8,16 +8,14 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-22.04
-    env:
-      DOTNET_SYSTEM_GLOBALIZATION_INVARIANT: '1'
+    runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7.0.1
 
-      - name: Setup .NET Core 3.1
-        uses: actions/setup-dotnet@v4
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v6.0.0
         with:
-          dotnet-version: 3.1.x
+          dotnet-version: 8.0.x
 
       - name: Restore
         run: dotnet restore
